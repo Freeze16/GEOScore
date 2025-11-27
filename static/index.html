@@ -14,7 +14,7 @@
         </header>
 
         <main class="main-content">
-            <form method="post" action="/analyze" class="analysis-form">
+            <div class="analysis-form">
                 <div class="form-group">
                     <label for="url">Введите URL страницы для анализа:</label>
                     <input
@@ -22,19 +22,20 @@
                         id="url"
                         name="url"
                         placeholder="https://example.com"
-                        required
                         class="url-input"
                     >
                 </div>
                 <button type="submit" class="analyze-btn">
                     🔍 Анализировать
                 </button>
-            </form>
+            </div>
         </main>
 
         <footer class="footer">
             <p>&copy; 2025 GEOScore. Все права защищены.</p>
         </footer>
     </div>
+
+    <script src="index.js"></script>
 </body>
 </html>
