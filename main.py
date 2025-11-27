@@ -16,7 +16,7 @@ async def analyze_url(request: str):
         raise HTTPException(status_code=400, detail="Page not found or not HTML")
 
     parser = HtmlParser(html.content)
-    print(parser.headers)
+    print(parser.title, parser.author, parser.description)
 
     return {"result": 1.0}
 

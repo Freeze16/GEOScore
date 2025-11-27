@@ -14,6 +14,7 @@ enum class HeaderWeight { H1 = 1, H2, H3, H4, H5, H6 };
 
 class Parser {
   private:
+    std::optional<std::string> title;
     std::optional<std::string> author;
     std::optional<std::string> description;
     std::vector<std::string> keywords;
@@ -23,6 +24,7 @@ class Parser {
   public:
     Parser(const std::string &document);
 
+    const decltype(title) &getTitle() const noexcept { return title; }
     const decltype(author) &getAuthor() const noexcept { return author; }
     const decltype(description) &getDescription() const noexcept {
         return description;
@@ -47,6 +49,7 @@ static inline void parser_init(pybind11::module_ &m) {
 
     py::class_<Parser>(m, "HtmlParser")
         .def(py::init<const std::string &>())
+        .def_property_readonly("title", &Parser::getTitle)
         .def_property_readonly("author", &Parser::getAuthor)
         .def_property_readonly("description", &Parser::getDescription)
         .def_property_readonly("keywords", &Parser::getKeywords)
