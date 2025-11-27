@@ -11,7 +11,7 @@ authors = [
     {name = 'Tafincev Dmitry', email = 'tafincev05@gmail.com'},
     {name = 'Karabanov Denis', email = 'karabanovdenis2005@mail.ru'}
 ]
-dependencies = ['fastapi[all]', 'unicorn[standard]']
+dependencies = ['fastapi[all]', 'uvicorn[standard]', 'requests']
 
 [build-system]
 build-backend = 'mesonpy'
