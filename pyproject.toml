@@ -1,0 +1,15 @@
+[project]
+name = 'GEOScore'
+version = '0.1.0'
+readme = 'README.md'
+requires-python = '>=3.8'
+license = {file = 'LICENSE'}
+authors = [
+  {name = 'Bokhonko Roman', email = 'nesanya1990@gmail.com'},
+  {name = 'Mayorov Daniil', email = 'daniil.major123@gmail.com'}
+]
+dependencies = ['fastapi']
+
+[build-system]
+build-backend = 'mesonpy'
+requires = ['meson-python']
