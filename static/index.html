@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEOScore - Анализ веб-страниц</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🌍 GEOScore</h1>
+            <p class="subtitle">Анализ и оценка веб-страниц</p>
+        </header>
+
+        <main class="main-content">
+            <form method="post" action="/analyze" class="analysis-form">
+                <div class="form-group">
+                    <label for="url">Введите URL страницы для анализа:</label>
+                    <input
+                        type="url"
+                        id="url"
+                        name="url"
+                        placeholder="https://example.com"
+                        required
+                        class="url-input"
+                    >
+                </div>
+                <button type="submit" class="analyze-btn">
+                    🔍 Анализировать
+                </button>
+            </form>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 GEOScore. Все права защищены.</p>
+        </footer>
+    </div>
+</body>
+</html>
