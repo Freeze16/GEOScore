@@ -2,4 +2,5 @@
 build
 .venv
 subprojects/*
-!subprojects/*.wrap
+!subprojects/*.
+**/__pycache__
