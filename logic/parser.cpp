@@ -1,5 +1,6 @@
 #include "parser.hpp"
 
+#include <cstring>
 #include <libxml/HTMLparser.h>
 #include <stdexcept>
 #include <string_view>
@@ -7,44 +8,39 @@
 #define CONST_STR(s) (reinterpret_cast<const char *>(s))
 
 namespace {
-xmlNode *findByTag(xmlNode *root, const std::string_view name) noexcept {
-    xmlNode *node = root->children;
-    while (node && std::string_view(CONST_STR(node->name)) != "head")
-        node = node->next ? node->next : node->children;
-    return node;
+inline void parse_node(Parser &parser, xmlNode *node) {
+    if (node->type != XML_ELEMENT_NODE)
+        return;
+
+    std::string_view name(CONST_STR(node->name));
+    if (name == "meta")
+        parser.lines.push_back(name.data());
+}
+
+void DSR(Parser &parser, xmlNode *node) {
+    for (xmlNode *cur_node = node; cur_node; cur_node = cur_node->next) {
+        parse_node(parser, cur_node);
+        DSR(parser, cur_node->children);
+    }
 }
 } // namespace
 
 Parser::Parser(const std::string &document) {
+    const auto except = std::invalid_argument("Document is not valid");
+
     htmlDocPtr doc =
         htmlReadMemory(document.data(), document.size(), nullptr, "UTF-8",
                        HTML_PARSE_NOBLANKS | HTML_PARSE_NOERROR |
                            HTML_PARSE_NOWARNING | HTML_PARSE_NONET);
     if (!doc) [[unlikely]]
-        throw std::invalid_argument("Document is not valid");
+        throw except;
 
     xmlNode *root = xmlDocGetRootElement(doc);
+    if (!root) [[unlikely]]
+        throw except;
 
-    xmlNode *head = findByTag(root, "head");
-    xmlNode *body = findByTag(root, "body");
+    DSR(*this, root);
 
-    if (!(head && body))
-        throw std::invalid_argument(
-            "Document doesn't contain head or body tag");
-
-    // xmlNode *titleTag = findByTag(head, "title");
-    // if (titleTag)
-    //     title = std::string(CONST_STR(titleTag->name));
-
-    for (xmlNode *node = head->next; node; node = node->next)
-        if (std::string_view(CONST_STR(node->name)) == "meta") {
-            std::string_view tag(
-                CONST_STR(xmlGetProp(node, (const xmlChar *)"name")));
-            std::string value(CONST_STR(node->name));
-
-            if (tag == "author")
-                author = value;
-            else if (tag == "description")
-                description = value;
-        }
+    xmlFreeDoc(doc);
+    xmlCleanupParser();
 }

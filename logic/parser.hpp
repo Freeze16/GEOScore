@@ -12,8 +12,7 @@
 
 enum class HeaderWeight { H1 = 1, H2, H3, H4, H5, H6 };
 
-class Parser {
-  private:
+struct Parser {
     std::optional<std::string> title;
     std::optional<std::string> author;
     std::optional<std::string> description;
@@ -21,7 +20,6 @@ class Parser {
     std::vector<std::pair<HeaderWeight, std::string>> headers;
     std::vector<std::string> lines;
 
-  public:
     Parser(const std::string &document);
 
     const decltype(title) &getTitle() const noexcept { return title; }

@@ -11,7 +11,7 @@ load_dotenv()
 
 app = FastAPI(title="GEOScore", version="0.2.0")
 
-api_key = os.getenv('API_KEY')
+api_key = os.getenv("API_KEY")
 
 
 @app.post("/api/analyze")
@@ -21,10 +21,11 @@ async def analyze_url(request: str):
     except:
         raise HTTPException(status_code=400, detail="Url is not valid")
 
-    if not (html.status_code == 200 and html.headers.get('content-type').startswith('text/html')):
+    if not html.status_code == 200:
         raise HTTPException(status_code=400, detail="Page not found or not HTML")
 
     parser = HtmlParser(html.content)
+    print(parser.lines)
     result = prompt_groq(api_key, parser)
 
     return {"result": result}
