@@ -30,12 +30,122 @@
             </div>
           </div>
 
-          <div class="results" id="results">
-            <div class="metric"><div class="k">Видимость</div><div class="v" id="r1">—</div></div>
-            <div class="metric"><div class="k">Скорость</div><div class="v" id="r2">—</div></div>
-            <div class="metric"><div class="k">SEO</div><div class="v" id="r3">—</div></div>
-            <div class="metric"><div class="k">Безопасность</div><div class="v" id="r4">—</div></div>
-          </div>
+
+          
+          <div class="compare-section" id="compareSection">
+
+  <h2 class="cmp-title">Итоговый рейтинг GEOScore</h2>
+
+  <div class="final-score-wrapper">
+      <div class="final-score" id="finalScore">—</div>
+  </div>
+
+  <hr class="section-divider">
+
+  <h2 class="cmp-title">Сравнение с лидером выдачи</h2>
+
+  <div class="cmp-grid">
+
+    <!-- ЛЕВЫЙ САЙТ -->
+    <div class="cmp-table">
+      <h3>Ваш сайт</h3>
+
+      <div class="metric-row">
+        <span>Логичность разметки</span>
+        <div class="bar-container">
+          <div class="bar"><div id="m1_l"></div></div>
+          <span class="value" id="m1_l_val">—</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span>Цитируемость контента</span>
+        <div class="bar-container">
+          <div class="bar"><div id="m2_l"></div></div>
+          <span class="value" id="m2_l_val">—</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span>Частота появления</span>
+        <div class="bar-container">
+          <div class="bar"><div id="m3_l"></div></div>
+          <span class="value" id="m3_l_val">—</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span>Глубина контента</span>
+        <div class="bar-container">
+          <div class="bar"><div id="m4_l"></div></div>
+          <span class="value" id="m4_l_val">—</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span>Авторитет автора</span>
+        <div class="bar-container">
+          <div class="bar"><div id="m5_l"></div></div>
+          <span class="value" id="m5_l_val">—</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span>Фактическая точность</span>
+        <div class="bar-container">
+          <div class="bar"><div id="m6_l"></div></div>
+          <span class="value" id="m6_l_val">—</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span>Выделенность сущностей</span>
+        <div class="bar-container">
+          <div class="bar"><div id="m7_l"></div></div>
+          <span class="value" id="m7_l_val">—</span>
+        </div>
+      </div>
+
+      <div class="metric-row">
+        <span>Актуальность</span>
+        <div class="bar-container">
+          <div class="bar"><div id="m8_l"></div></div>
+          <span class="value" id="m8_l_val">—</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ПРАВЫЙ САЙТ -->
+    <div class="cmp-table">
+      <h3>Лидер выдачи</h3>
+
+      <div class="metric-row"><span>Логичность разметки</span><div class="bar-container"><div class="bar"><div id="m1_r"></div></div><span class="value" id="m1_r_val">—</span></div></div>
+      <div class="metric-row"><span>Цитируемость контента</span><div class="bar-container"><div class="bar"><div id="m2_r"></div></div><span class="value" id="m2_r_val">—</span></div></div>
+      <div class="metric-row"><span>Частота появления</span><div class="bar-container"><div class="bar"><div id="m3_r"></div></div><span class="value" id="m3_r_val">—</span></div></div>
+      <div class="metric-row"><span>Глубина контента</span><div class="bar-container"><div class="bar"><div id="m4_r"></div></div><span class="value" id="m4_r_val">—</span></div></div>
+      <div class="metric-row"><span>Авторитет автора</span><div class="bar-container"><div class="bar"><div id="m5_r"></div></div><span class="value" id="m5_r_val">—</span></div></div>
+      <div class="metric-row"><span>Фактическая точность</span><div class="bar-container"><div class="bar"><div id="m6_r"></div></div><span class="value" id="m6_r_val">—</span></div></div>
+      <div class="metric-row"><span>Выделенность сущностей</span><div class="bar-container"><div class="bar"><div id="m7_r"></div></div><span class="value" id="m7_r_val">—</span></div></div>
+      <div class="metric-row"><span>Актуальность</span><div class="bar-container"><div class="bar"><div id="m8_r"></div></div><span class="value" id="m8_r_val">—</span></div></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+    <div class="recommendations" id="recommendations">
+    <h2>Рекомендации по улучшению сайта</h2>
+    <div class="rec-grid" id="recGrid">
+        </div>
+
+</div>
+
+
+
         </div>
       </section>
 
@@ -46,3 +156,4 @@
     <script src="index.js"></script>
 </body>
 </html>
+
